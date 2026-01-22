@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olayinka Wasiu | GenAI for Work & Research</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #10b981; /* Teal Green */
+            --secondary: #0d9488; /* Darker Teal */
+            --accent: #34d399;
+            --bg: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Background Glows */
+        .glow-1 {
+            position: fixed;
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .glow-2 {
+            position: fixed;
+            bottom: -10%;
+            right: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(13, 148, 136, 0.12) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: radial-gradient(circle at center, rgba(15, 23, 42, 0) 0%, var(--bg) 100%);
+        }
+
+        .nav-fixed {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .section-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 8rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(16, 185, 129, 0.4);
+        }
+
+        /* About Grid */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .profile-info h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            margin: 0.3rem;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        /* Course Modules */
+        .module-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .module-item {
+            padding: 1.5rem;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+        }
+
+        .module-number {
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        /* Submissions Grid */
+        .submission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .submission-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            aspect-ratio: 4/3;
+            background: linear-gradient(45deg, #1e293b, #0f172a);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .submission-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.2);
+        }
+
+        .status-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--primary);
+        }
+
+        footer {
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            h1 { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="glow-1"></div>
+    <div class="glow-2"></div>
+
+    <nav class="nav-fixed">
+        <div style="font-weight: 800; letter-spacing: 1px;">OLAYINKA<span style="color: var(--primary);">.</span></div>
+        <div class="nav-links">
+            <a href="#about">About Me</a>
+            <a href="#course">Course</a>
+            <a href="#submissions">Work</a>
+        </div>
+    </nav>
+
+    <header>
+        <div class="hero-subtitle">Portfolio & Research Lab</div>
+        <h1>Fadahunsi Olayinka</h1>
+        <p style="max-width: 600px; color: var(--text-muted); margin: 0 auto 2rem;">
+            Bridging Mechanical Engineering and Project Management with responsible Generative AI automation. 
+            Currently exploring <strong>The GRAPH Courses: GenAI for Work & Research</strong>.
+        </p>
+        <a href="#submissions" style="padding: 1rem 2.5rem; background: var(--primary); color: white; text-decoration: none; border-radius: 100px; font-weight: 600; box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);">View Submissions</a>
+    </header>
+
+    <section id="about" class="section-container">
+        <h2 class="section-title">About Me</h2>
+        <div class="glass-card about-grid">
+            <div class="profile-info">
+                <h3>Mechanical Engineer & Project Expert</h3>
+                <p style="margin-bottom: 1.5rem; color: var(--text-muted);">
+                    I am a B.Tech graduate in Mechanical Engineering with a career strength in Project Management and Facility Management. 
+                    Currently serving as a Project Engineer at Mantrac Nigeria Ltd, I manage complex industrial installations from bidding to handover.
+                </p>
+                <div class="skills">
+                    <span class="skill-tag">Project Engineering</span>
+                    <span class="skill-tag">Facility Management</span>
+                    <span class="skill-tag">Technical Bidding</span>
+                    <span class="skill-tag">Problem Solving</span>
+                    <span class="skill-tag">AI Automation</span>
+                </div>
+            </div>
+            <div style="background: rgba(255,255,255,0.02); border-radius: 16px; padding: 2rem; border: 1px solid var(--border);">
+                <h4 style="margin-bottom: 1rem;">Career Highlights</h4>
+                <ul style="list-style: none; color: var(--text-muted); font-size: 0.95rem;">
+                    <li style="margin-bottom: 0.8rem;">✨ <strong>Mantrac Nigeria:</strong> Leading site inspections and technical proposals.</li>
+                    <li style="margin-bottom: 0.8rem;">🏢 <strong>Daleji Properties:</strong> Expert Facility Management oversight.</li>
+                    <li style="margin-bottom: 0.8rem;">⚡ <strong>Transmission Company of Nigeria:</strong> Infrastructure fabrication and maintenance.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="course" class="section-container">
+        <h2 class="section-title">The Course</h2>
+        <div class="glass-card">
+            <h3 style="margin-bottom: 2rem;">Generative AI for Work & Research</h3>
+            <p style="color: var(--text-muted); margin-bottom: 3rem;">
+                An 8-week intensive cohort focused on no-code AI tools for responsible task automation and productivity. 
+                This journey focuses on integrating LLMs into professional workflows with integrity.
+            </p>
+            
+            <div class="module-list">
+                <div class="module-item">
+                    <span class="module-number">MODULE 1</span>
+                    <h4>Websites & Docs</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">LLMs, Markdown, LaTeX, and no-code site building.</p>
+                </div>
+                <div class="module-item">
+                    <span class="module-number">MODULE 2</span>
+                    <h4>Data Analysis</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">AI-automated data cleaning and visualization.</p>
+                </div>
+                <div class="module-item">
+                    <span class="module-number">MODULE 3</span>
+                    <h4>Literature Review</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Mapping research domains and citations with AI.</p>
+                </div>
+                <div class="module-item">
+                    <span class="module-number">MODULE 4</span>
+                    <h4>Writing & Editing</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Drafting papers and grant proposals responsibly.</p>
+                </div>
+                <div class="module-item">
+                    <span class="module-number">MODULE 5</span>
+                    <h4>Task Automation</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Building AI agents and email response systems.</p>
+                </div>
+                <div class="module-item">
+                    <span class="module-number">MODULE 6</span>
+                    <h4>Communication</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Video abstracts and scientific visualization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="submissions" class="section-container">
+        <h2 class="section-title">Weekly Submissions</h2>
+        <div class="submission-grid">
+            <div class="submission-card">
+                <span class="status-badge">Current</span>
+                <div style="font-size: 2rem;">📄</div>
+                <h4 style="margin-top:1rem;">Week 1: Foundations</h4>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Markdown and Website Deployment</p>
+                <div style="margin-top: 1.5rem; font-size: 0.75rem; color: var(--primary); font-weight: 600;">View Draft</div>
+            </div>
+
+            <div class="submission-card">
+                <span class="status-badge" style="background: rgba(148,163,184,0.1); color: var(--text-muted);">Upcoming</span>
+                <div style="font-size: 2rem;">📊</div>
+                <h4 style="margin-top:1rem;">Week 2: Data</h4>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Automated Cleaning & Insights</p>
+            </div>
+
+            <div class="submission-card">
+                <span class="status-badge" style="background: rgba(148,163,184,0.1); color: var(--text-muted);">Upcoming</span>
+                <div style="font-size: 2rem;">🔍</div>
+                <h4 style="margin-top:1rem;">Week 3: Literature</h4>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Citation Mapping & Analysis</p>
+            </div>
+
+            <div class="submission-card">
+                <span class="status-badge" style="background: rgba(148,163,184,0.1); color: var(--text-muted);">Upcoming</span>
+                <div style="font-size: 2rem;">✍️</div>
+                <h4 style="margin-top:1rem;">Week 4: Writing</h4>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Grant Proposal Drafting</p>
+            </div>
+
+            <div class="submission-card">
+                <span class="status-badge" style="background: rgba(148,163,184,0.1); color: var(--text-muted);">Upcoming</span>
+                <div style="font-size: 2rem;">🤖</div>
+                <h4 style="margin-top:1rem;">Week 5: Agents</h4>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Automation Flows & Bots</p>
+            </div>
+
+            <div class="submission-card" style="border-style: dashed; border-color: var(--primary);">
+                <div style="font-size: 2rem;">🏆</div>
+                <h4 style="margin-top:1rem;">Capstone Project</h4>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Final Showcase Submission</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Olayinka Wasiu. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; opacity: 0.6;">Generative AI for Work & Research • The GRAPH Courses</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.glass-card, .submission-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
