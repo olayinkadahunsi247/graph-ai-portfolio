@@ -63,7 +63,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 6rem 2rem 2rem;
+            padding: 8rem 2rem 2rem;
             background: radial-gradient(circle at center, rgba(15, 23, 42, 0) 0%, var(--bg) 100%);
         }
 
@@ -92,13 +92,31 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.5rem 2rem;
+            padding: 1.2rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .nav-avatar-mini {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            object-fit: cover;
         }
 
         .nav-links a {
@@ -235,6 +253,8 @@
             text-align: center;
             padding: 2rem;
             border: 1px solid var(--border);
+            text-decoration: none;
+            color: inherit;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
@@ -253,6 +273,15 @@
             border-radius: 4px;
             background: rgba(16, 185, 129, 0.2);
             color: var(--primary);
+        }
+
+        .submission-link-text {
+            margin-top: 1.5rem;
+            font-size: 0.75rem;
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         footer {
@@ -275,7 +304,10 @@
     <div class="glow-2"></div>
 
     <nav class="nav-fixed">
-        <div style="font-weight: 800; letter-spacing: 1px;">OLAYINKA<span style="color: var(--primary);">.</span></div>
+        <a href="#" class="nav-brand">
+            <img src="https://github.com/olayinkadahunsi247/graph-ai-portfolio/blob/main/Ola.png?raw=true" alt="Ola" class="nav-avatar-mini">
+            <div>OLAYINKA<span style="color: var(--primary);">.</span></div>
+        </a>
         <div class="nav-links">
             <a href="#about">About Me</a>
             <a href="#course">Course</a>
@@ -371,21 +403,25 @@
     <section id="submissions" class="section-container">
         <h2 class="section-title">Weekly Submissions</h2>
         <div class="submission-grid">
+            <!-- Week 1 -->
             <div class="submission-card">
-                <span class="status-badge">Current</span>
+                <span class="status-badge">Complete</span>
                 <div style="font-size: 2rem;">📄</div>
                 <h4 style="margin-top:1rem;">Week 1: Foundations</h4>
                 <p style="font-size: 0.8rem; color: var(--text-muted);">Markdown and Website Deployment</p>
-                <div style="margin-top: 1.5rem; font-size: 0.75rem; color: var(--primary); font-weight: 600;">View Draft</div>
+                <div class="submission-link-text">Live Portfolio</div>
             </div>
 
-            <div class="submission-card">
-                <span class="status-badge" style="background: rgba(148,163,184,0.1); color: var(--text-muted);">Upcoming</span>
+            <!-- Week 2 - UPDATED PROJECT -->
+            <a href="https://olayinkadahunsi247.github.io/graph-ai-portfolio/My%20assignment.pdf" target="_blank" class="submission-card">
+                <span class="status-badge">New Submission</span>
                 <div style="font-size: 2rem;">📊</div>
                 <h4 style="margin-top:1rem;">Week 2: Data</h4>
-                <p style="font-size: 0.8rem; color: var(--text-muted);">Automated Cleaning & Insights</p>
-            </div>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Gapminder Data Exploration using AI tools</p>
+                <div class="submission-link-text">View Report (PDF)</div>
+            </a>
 
+            <!-- Week 3 -->
             <div class="submission-card">
                 <span class="status-badge" style="background: rgba(148,163,184,0.1); color: var(--text-muted);">Upcoming</span>
                 <div style="font-size: 2rem;">🔍</div>
@@ -393,6 +429,7 @@
                 <p style="font-size: 0.8rem; color: var(--text-muted);">Citation Mapping & Analysis</p>
             </div>
 
+            <!-- Week 4 -->
             <div class="submission-card">
                 <span class="status-badge" style="background: rgba(148,163,184,0.1); color: var(--text-muted);">Upcoming</span>
                 <div style="font-size: 2rem;">✍️</div>
@@ -400,6 +437,7 @@
                 <p style="font-size: 0.8rem; color: var(--text-muted);">Grant Proposal Drafting</p>
             </div>
 
+            <!-- Week 5 -->
             <div class="submission-card">
                 <span class="status-badge" style="background: rgba(148,163,184,0.1); color: var(--text-muted);">Upcoming</span>
                 <div style="font-size: 2rem;">🤖</div>
@@ -407,6 +445,7 @@
                 <p style="font-size: 0.8rem; color: var(--text-muted);">Automation Flows & Bots</p>
             </div>
 
+            <!-- Capstone -->
             <div class="submission-card" style="border-style: dashed; border-color: var(--primary);">
                 <div style="font-size: 2rem;">🏆</div>
                 <h4 style="margin-top:1rem;">Capstone Project</h4>
