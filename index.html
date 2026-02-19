@@ -287,6 +287,13 @@
             letter-spacing: 1px;
         }
 
+        /* Form Container */
+        .form-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
         footer {
             padding: 4rem 2rem;
             text-align: center;
@@ -299,6 +306,7 @@
             .about-grid { grid-template-columns: 1fr; }
             .nav-links { display: none; }
             h1 { font-size: 3rem; }
+            .form-container iframe { width: 100%; }
         }
     </style>
 </head>
@@ -315,6 +323,7 @@
             <a href="#about">About Me</a>
             <a href="#course">Course</a>
             <a href="#submissions">Work</a>
+            <a href="#contact">Contact</a>
         </div>
     </nav>
 
@@ -423,7 +432,7 @@
             </a>
 
             <a href="https://olayinkadahunsi247.github.io/graph-ai-portfolio/Assignment%20JOB%20POST%20REPORT.pdf" target="_blank" class="submission-card">
-                <span class="status-badge">New Submission</span>
+                <span class="status-badge">Complete</span>
                 <div style="font-size: 2rem;">🔍</div>
                 <h4 style="margin-top:1rem;">Workshop 3: Job Market</h4>
                 <p style="font-size: 0.8rem; color: var(--text-muted);">AI-driven Job Market Data Analysis</p>
@@ -449,6 +458,13 @@
                 <h4 style="margin-top:1rem;">Capstone Project</h4>
                 <p style="font-size: 0.8rem; color: var(--text-muted);">Final Showcase Submission</p>
             </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-container">
+        <h2 class="section-title">Contact for Consultation</h2>
+        <div class="glass-card form-container">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdrRT9fRcXOobjioezW8a5OzWCe4aSudBku5PeKo2ZI7Ce6xw/viewform?embedded=true" width="640" height="780" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
         </div>
     </section>
 
