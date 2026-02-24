@@ -291,7 +291,14 @@
         .form-container {
             display: flex;
             justify-content: center;
+            align-items: center;
             width: 100%;
+            overflow: hidden;
+        }
+
+        .form-container iframe {
+            max-width: 100%;
+            border-radius: 12px;
         }
 
         footer {
@@ -306,7 +313,7 @@
             .about-grid { grid-template-columns: 1fr; }
             .nav-links { display: none; }
             h1 { font-size: 3rem; }
-            .form-container iframe { width: 100%; }
+            .form-container iframe { width: 100%; height: 600px; }
         }
     </style>
 </head>
@@ -464,7 +471,7 @@
     <section id="contact" class="section-container">
         <h2 class="section-title">Contact for Consultation</h2>
         <div class="glass-card form-container">
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdrRT9fRcXOobjioezW8a5OzWCe4aSudBku5PeKo2ZI7Ce6xw/viewform?embedded=true" width="640" height="780" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd4IUAKS-hep0kelu52PVPZV8cJ3jRzo7hPoXJbhPOUXSlDRQ/viewform?embedded=true" width="700" height="520" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
         </div>
     </section>
 
